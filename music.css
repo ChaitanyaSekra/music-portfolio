@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f0f0f;
+  color: #f5f5f5;
+  font-family: system-ui, sans-serif;
+}
+
+/* NAVBAR (same layout, calmer look) */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  padding: 0 6vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  z-index: 10;
+}
+
+.nav-title {
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  opacity: 0.85;
+}
+
+/* NAV LINKS */
+.nav-right {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-right a {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.75;
+  letter-spacing: 1px;
+  transition: opacity 0.15s ease;
+}
+
+.nav-right a:hover {
+  opacity: 1;
+}
+
+.nav-right a.active,
+.nav-right a:hover {
+  opacity: 1;
+}
+
+/* PAGE */
+.music-page {
+  padding: 6rem 6vw 4rem;
+}
+
+/* HEADER */
+.music-header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.music-header p {
+  opacity: 0.6;
+}
+
+/* GRID */
+.release-grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2.5rem;
+}
+
+/* RELEASE CARD */
+/* RELEASE CARD */
+.release {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+/* COVER HOVER EFFECT */
+.release img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* HOVER LIFT */
+.release:hover img {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* INFO */
+.release-info h3 {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.release-info span {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+/* LINKS */
+.release-links {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.release-links a {
+  font-size: 0.8rem;
+  color: #fff;
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.release-links a:hover {
+  opacity: 1;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+
+/* CONTENT */
+.modal-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 420px;
+  background: #111;
+  margin: 10vh auto;
+  padding: 24px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+/* CLOSE */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.modal-close:hover {
+  opacity: 1;
+}
+
+/* COVER */
+.modal-cover {
+  width: 97%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* PLATFORMS */
+.platform-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.platform-links img {
+  width: 36px;
+  height: 36px;
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.platform-links img:hover {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+
+/* PLATFORM LIST */
+.platform-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* BASE PLATFORM ROW */
+.platform a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #fff;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.platform img {
+  width: 36px;
+  height: 36px;
+}
+
+/* HOVER */
+.platform a:hover {
+  transform: translateY(-2px);
+}
+
+/* PLATFORM THEMES (subtle, not neon) */
+.platform.spotify a {
+  background: rgba(30, 215, 96, 0.15);
+  border: 1px solid rgba(30, 215, 96, 0.35);
+}
+
+.platform.apple a {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.platform.youtube a {
+  background: rgba(255, 0, 0, 0.12);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+
+@media (hover: hover) {
+  .release:hover img {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+}
