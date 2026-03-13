@@ -1,73 +1,597 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sekra OG</title>
-
-  <link rel="stylesheet" href="home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEKRA OG — Official</title>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Special+Elite&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <span class="nav-title">SEKRA OG</span>
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">SEKRA<span> OG</span></a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')"   id="nav-home"   class="active">Home</a></li>
+    <li><a onclick="showPage('music')"  id="nav-music">Music</a></li>
+    <li><a onclick="showPage('videos')" id="nav-videos">Videos</a></li>
+    <li><a onclick="showPage('about')"  id="nav-about">About</a></li>
+    <li><a onclick="showPage('social')" id="nav-social">Social</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hblob hb1"></div>
+  <div class="hblob hb2"></div>
+  <div class="hblob hb3"></div>
+  <div class="gtag gt1">SEKRAOG</div>
+  <div class="gtag gt2">RAP</div>
+  <div class="gtag gt3">JAIPUR CITY · INDIA</div>
+
+  <div class="home-content">
+    <p class="home-eyebrow">Est. Jaipur &nbsp;·&nbsp; Rap &nbsp;·&nbsp; Hip-Hop</p>
+    <div class="home-logo">
+      <span class="l1">SEKRA</span>
+      <span class="l2">OG</span>
     </div>
-    <div class="nav-right">
-      <a href="#" class="active">Home</a>
-      <a href="music.html">Music</a>
-      <a href="social.html">Social</a>
-      <a href="info.html">Info</a>
+    <p class="home-tagline">Raw bars. Real words. No filter.</p>
+    <div class="play-zone">
+      <button class="play-btn" onclick="showPage('music')" aria-label="Go to music">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </button>
+      <span class="play-label">Press Play</span>
     </div>
-  </nav>
+  </div>
+</div>
 
-  <section class="hero">
+<!-- ══════════════════════════════════════
+     PAGE: MUSIC
+     Tracks ordered: latest first (2025 → 2023)
+     Order: Chaand, Marwadi Mix, Highzone Freestyle,
+            Brains Out, Echoes of the Year, Raahein,
+            Desh ki Sachaai
+══════════════════════════════════════ -->
+<div id="page-music" class="page">
 
-    <!-- CONTEXT LABEL -->
-
-    <!-- PLAYER CARD -->
-    <div class="player-card">
-
-      <img src="assets/images/pfp.jpg" alt="Album Art" class="cover">
-
-      <div class="info">
-        <span class="label">DHH BY</span>
-        <h2 class="title">SEKRA OG</h2>
+  <div class="music-header reveal">
+    <div class="music-title">The<br><span class="outline">Catalogue</span></div>
+    <div class="controls">
+      <div class="filter-bar">
+        <span class="flabel">Filter:</span>
+        <button class="filter-btn active" onclick="filterTracks('all', this)">All</button>
+        <button class="filter-btn"        onclick="filterTracks('single', this)">Singles</button>
+        <button class="filter-btn"        onclick="filterTracks('ep', this)">EPs / Albums</button>
       </div>
-
-      <div class="progress">
-        <div class="progress-fill"></div>
+      <div class="view-toggle">
+        <button class="vbtn active" id="btn-grid" onclick="setView('grid')" title="Grid view">
+          <svg viewBox="0 0 14 14" fill="currentColor">
+            <rect x="0" y="0" width="6" height="6"/>
+            <rect x="8" y="0" width="6" height="6"/>
+            <rect x="0" y="8" width="6" height="6"/>
+            <rect x="8" y="8" width="6" height="6"/>
+          </svg>
+        </button>
+        <button class="vbtn" id="btn-list" onclick="setView('list')" title="List view">
+          <svg viewBox="0 0 14 14" fill="currentColor">
+            <rect x="0" y="0"  width="14" height="2"/>
+            <rect x="0" y="6"  width="14" height="2"/>
+            <rect x="0" y="12" width="14" height="2"/>
+          </svg>
+        </button>
       </div>
+    </div>
+  </div>
 
-      <div class="controls">
-        <span class="icon">⏮</span>
-
-        <a href="music.html" class="play-btn" aria-label="Go to music">
-          ▶
-        </a>
-
-        <span class="icon">⏭</span>
-      </div>
-
-      <div class="volume">
-        <span>🔊</span>
-        <div class="volume-bar"></div>
-      </div>
-
+  <!-- ── Albums & EPs ── -->
+  <div id="sec-proj">
+    <div class="sec-div reveal">
+      <div class="sec-div-t">Albums &amp; EPs</div>
+      <div class="sec-div-l"></div>
     </div>
 
+    <div class="ep-grid reveal">
+
+      <!-- ═══ EP CARD — duplicate this block for each EP/Album ═══ -->
+      <div class="ep-card">
+
+        <div class="ep-top">
+          <div class="ep-cover-wrap" style="background: linear-gradient(135deg,#1a0a00,#3a1500)">
+            <img src="covers/Chaand.jpg" alt="Your EP cover art" class="ep-cover-img" onerror="this.style.display='none'">
+            <div class="ep-cover-ph">EP</div>
+          </div>
+          <div class="ep-meta">
+            <div class="ep-meta-top">
+              <span class="ep-type-pill">EP</span>
+              <div class="ep-title">Chaand</div>
+            </div>
+            <div class="ep-meta-detail">
+              <div class="ep-date">7 March 2026</div>
+              <div class="ep-genre">Lo-fi Hip-Hop · 3 Tracks · Sekra OG</div>
+            </div>
+            <div class="ep-stream-btns">
+              <a href="https://open.spotify.com/album/53GMhw6Pi2y15nERNcIsYa?si=8BAkOWZXTFu3RFxmzBH0UA" target="_blank" class="sl sp">Spotify</a>
+              <a href="https://music.youtube.com/playlist?list=OLAK5uy_mwFeAEIUND_rYh5-LWykYhEhwQma6A83U&si=y2MwqtVSaA6cMCo4" target="_blank" class="sl yt">YouTube</a>
+              <a href="https://music.apple.com/us/album/chaand-single/1884691714" target="_blank" class="sl am">Apple</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="ep-tracklist-toggle" onclick="toggleTracklist(this)" aria-expanded="false">
+          <div class="ep-tracklist-toggle-inner">
+            <span>Tracklist</span>
+            <span class="ep-track-count">3 Tracks</span>
+          </div>
+          <svg class="ep-chev" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="2,4 7,10 12,4"/>
+          </svg>
+        </button>
+        <div class="ep-tracklist" hidden>
+          <div class="ep-track-row">
+            <span class="ep-t-num">01</span>
+            <span class="ep-t-name">Noor</span>
+            <span class="ep-t-runtime">1:31</span>
+          </div>
+          <div class="ep-track-row">
+            <span class="ep-t-num">02</span>
+            <span class="ep-t-name">Talaash</span>
+            <span class="ep-t-runtime">1:52</span>
+          </div>
+          <div class="ep-track-row">
+            <span class="ep-t-num">03</span>
+            <span class="ep-t-name">Shayad</span>
+            <span class="ep-t-runtime">1:44</span>
+          </div>
+        </div>
+
+      </div><!-- /ep-card -->
+
+    </div><!-- /ep-grid -->
+  </div><!-- /sec-proj -->
+
+  <!-- ── Singles ── -->
+  <div id="sec-singles">
+    <div class="sec-div reveal">
+      <div class="sec-div-t">Singles</div>
+      <div class="sec-div-l"></div>
+    </div>
+
+    <!-- GRID VIEW -->
+    <div class="track-grid" id="grid-view">
 
 
-  </section>
+      <!-- 01 · Marwadi Mix · 2026 -->
+      <div class="track-card">
+        <div class="track-art" style="background: linear-gradient(135deg,#281000,#6a3000,#c87010)">
+          <img src="covers/marwadi-mix.jpg" alt="Marwadi Mix cover art" class="art-img" onerror="this.style.display='none'">
+          <div class="art-ov">
+            <a href="https://open.spotify.com/album/3KPF4QBxND8SIvw9vDTk4g?si=J55bOwnwQ-Kk1jvv6hDjPw" target="_blank" class="al sp">Spotify</a>
+            <a href="https://music.youtube.com/watch?v=qgfLMDU3IGs&si=0_DT8cJHcMyD8xkp" target="_blank" class="al yt">YouTube</a>
+            <a href="https://music.apple.com/us/song/marwadi-mix/1880874475"     target="_blank" class="al am">Apple</a>
+          </div>
+        </div>
+        <div class="tc-info">
+          <span class="tc-pill">Single · 2026</span>
+          <div class="tc-name">Marwadi Mix</div>
+          <div class="tc-date">16 Feb 2026</div>
+          <div class="tc-bottom"><span class="tc-meta">Desi Rap</span><span class="tc-runtime">2:17</span></div>
+        </div>
+      </div>
 
-  <script src="home.js"></script>
+      <!-- 02 · Highzone Freestyle · 2025 -->
+      <div class="track-card">
+        <div class="track-art" style="background: linear-gradient(135deg,#0a0015,#180025,#300050)">
+          <img src="covers/High-Zone-Freestyle.jpg" alt="Highzone Freestyle cover art" class="art-img" onerror="this.style.display='none'">
+          <div class="art-ov">
+            <a href="https://open.spotify.com/track/3s54MvAv1lpWfNoCZvm0Cw?si=c659fe2893a4403f" target="_blank" class="al sp">Spotify</a>
+            <a href="https://music.youtube.com/watch?v=Xv2C1YDUrts&si=o99efXevlKDN2gRN" target="_blank" class="al yt">YouTube</a>
+            <a href="https://music.apple.com/us/song/high-zone-freestyle/1834502976"     target="_blank" class="al am">Apple</a>
+          </div>
+        </div>
+        <div class="tc-info">
+          <span class="tc-pill">Single · 2025</span>
+          <div class="tc-name">High Zone Freestyle</div>
+          <div class="tc-date">7 Aug 2025</div>
+          <div class="tc-bottom"><span class="tc-meta">Hip-Hop Freestyle</span><span class="tc-runtime">1:30</span></div>
+        </div>
+      </div>
 
-  </section>
+      <!-- 03 · Brains Out · 2025 -->
+      <div class="track-card">
+        <div class="track-art" style="background: linear-gradient(135deg,#081420,#133060,#1a4080)">
+          <img src="covers/brains-out.jpg" alt="Brains Out cover art" class="art-img" onerror="this.style.display='none'">
+          <div class="art-ov">
+            <a href="https://open.spotify.com/track/2wYiFCN7NhUDzAFEVOJESY?si=35dae41c1a1a4fff" target="_blank" class="al sp">Spotify</a>
+            <a href="https://music.youtube.com/watch?v=Z148G_XY_w0&si=QvkT6NNFNXHp4ttB" target="_blank" class="al yt">YouTube</a>
+            <a href="https://music.apple.com/us/song/brains-out/1820153618"     target="_blank" class="al am">Apple</a>
+          </div>
+        </div>
+        <div class="tc-info">
+          <span class="tc-pill">Single · 2025</span>
+          <div class="tc-name">Brains Out</div>
+          <div class="tc-date">10 June 2025</div>
+          <div class="tc-bottom"><span class="tc-meta">Hip-Hop/Rap</span><span class="tc-runtime">2:56</span></div>
+        </div>
+      </div>
 
-  <script src="home.js"></script>
+      <!-- 04 · Echoes of the Year · 2024 -->
+      <div class="track-card">
+        <div class="track-art" style="background: linear-gradient(135deg,#1a0500,#3a1000,#b04010)">
+          <img src="covers/Echos-of-the-year.jpg" alt="Echoes of the Year cover art" class="art-img" onerror="this.style.display='none'">
+          <div class="art-ov">
+            <a href="https://open.spotify.com/track/3AEQpjOWRyCzKuAB52fa1B?si=c5a7c521bb3b46f7" target="_blank" class="al sp">Spotify</a>
+            <a href="https://music.apple.com/us/song/echoes-of-the-year/1789860359"     target="_blank" class="al am">Apple</a>
+          </div>
+        </div>
+        <div class="tc-info">
+          <span class="tc-pill">Single · 2024</span>
+          <div class="tc-name">Echoes of the Year</div>
+          <div class="tc-date">31 Dec 2024</div>
+          <div class="tc-bottom"><span class="tc-meta">Hip-Hop</span><span class="tc-runtime">1:53</span></div>
+        </div>
+      </div>
+
+      <!-- 05 · Desh ki Sachaai · 2024 -->
+      <div class="track-card">
+        <div class="track-art" style="background: linear-gradient(135deg,#0a0a1e,#1a1a3e,#2d2d55)">
+          <img src="covers/desh-ki-sachaai.jpg" alt="Desh ki Sachaai cover art" class="art-img" onerror="this.style.display='none'">
+          <div class="art-ov">
+            <a href="https://open.spotify.com/track/69Nxq4BJ1A9lcMcEDoZCSF?si=77f04caecac14a02" target="_blank" class="al sp">Spotify</a>
+            <a href="https://music.youtube.com/watch?v=5B02KOzsG10&si=HJSY-wXd8ZEpVtDA" target="_blank" class="al yt">YouTube</a>
+            <a href="https://music.apple.com/us/song/desh-ki-sachaai/1784595997"     target="_blank" class="al am">Apple</a>
+          </div>
+        </div>
+        <div class="tc-info">
+          <span class="tc-pill">Single · 2024</span>
+          <div class="tc-name">Desh ki Sachaai</div>
+          <div class="tc-date">14 Aug 2024</div>
+          <div class="tc-bottom"><span class="tc-meta">Desi Hip-Hop</span><span class="tc-runtime">2:01</span></div>
+        </div>
+      </div>
+
+    </div><!-- /grid-view -->
+
+    <!-- LIST VIEW -->
+    <div class="singles-list" id="list-view" style="display: none;">
+      <div class="list-hdr">
+        <span>#</span>
+        <span>Track</span>
+        <span>Released</span>
+        <span>Time</span>
+        <span>Stream</span>
+      </div>
+
+      <!-- 01 · Chaand -->
+      <div class="s-row">
+        <div class="s-num">01</div>
+        <div class="s-info">
+          <div class="s-thumb" style="background: linear-gradient(135deg,#000410,#001850)"><img src="covers/chaand.jpg" alt="Chaand" class="thumb-img" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="s-name">Chaand</div>
+            <div class="s-sub">Single · Lo-Fi Hip-Hop</div>
+          </div>
+        </div>
+        <div class="s-year">DD Mon 2025</div>
+        <div class="s-runtime">0:00</div>
+        <div class="s-links">
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl sp">Spotify</a>
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl yt">YouTube</a>
+          <a href="https://music.apple.com"     target="_blank" class="sl am">Apple</a>
+        </div>
+      </div>
+
+      <!-- 02 · Marwadi Mix -->
+      <div class="s-row">
+        <div class="s-num">02</div>
+        <div class="s-info">
+          <div class="s-thumb" style="background: linear-gradient(135deg,#281000,#c87010)"><img src="covers/marwadi-mix.jpg" alt="Marwadi Mix" class="thumb-img" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="s-name">Marwadi Mix</div>
+            <div class="s-sub">Single · Desi Rap</div>
+          </div>
+        </div>
+        <div class="s-year">DD Mon 2025</div>
+        <div class="s-runtime">0:00</div>
+        <div class="s-links">
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl sp">Spotify</a>
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl yt">YouTube</a>
+          <a href="https://music.apple.com"     target="_blank" class="sl am">Apple</a>
+        </div>
+      </div>
+
+      <!-- 03 · Highzone Freestyle -->
+      <div class="s-row">
+        <div class="s-num">03</div>
+        <div class="s-info">
+          <div class="s-thumb" style="background: linear-gradient(135deg,#0a0015,#300050)"><img src="covers/highzone-freestyle.jpg" alt="Highzone Freestyle" class="thumb-img" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="s-name">Highzone Freestyle</div>
+            <div class="s-sub">Single · Freestyle</div>
+          </div>
+        </div>
+        <div class="s-year">DD Mon 2025</div>
+        <div class="s-runtime">0:00</div>
+        <div class="s-links">
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl sp">Spotify</a>
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl yt">YouTube</a>
+          <a href="https://music.apple.com"     target="_blank" class="sl am">Apple</a>
+        </div>
+      </div>
+
+      <!-- 04 · Brains Out -->
+      <div class="s-row">
+        <div class="s-num">04</div>
+        <div class="s-info">
+          <div class="s-thumb" style="background: linear-gradient(135deg,#081420,#1a4080)"><img src="covers/brains-out.jpg" alt="Brains Out" class="thumb-img" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="s-name">Brains Out</div>
+            <div class="s-sub">Single · Lyrical</div>
+          </div>
+        </div>
+        <div class="s-year">DD Mon 2025</div>
+        <div class="s-runtime">0:00</div>
+        <div class="s-links">
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl sp">Spotify</a>
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl yt">YouTube</a>
+          <a href="https://music.apple.com"     target="_blank" class="sl am">Apple</a>
+        </div>
+      </div>
+
+      <!-- 05 · Echoes of the Year -->
+      <div class="s-row">
+        <div class="s-num">05</div>
+        <div class="s-info">
+          <div class="s-thumb" style="background: linear-gradient(135deg,#1a0500,#b04010)"><img src="covers/echoes-of-the-year.jpg" alt="Echoes of the Year" class="thumb-img" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="s-name">Echoes of the Year</div>
+            <div class="s-sub">Single · Introspective</div>
+          </div>
+        </div>
+        <div class="s-year">DD Mon 2024</div>
+        <div class="s-runtime">0:00</div>
+        <div class="s-links">
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl sp">Spotify</a>
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl yt">YouTube</a>
+          <a href="https://music.apple.com"     target="_blank" class="sl am">Apple</a>
+        </div>
+      </div>
+
+      <!-- 06 · Raahein -->
+      <div class="s-row">
+        <div class="s-num">06</div>
+        <div class="s-info">
+          <div class="s-thumb" style="background: linear-gradient(135deg,#080808,#222)"><img src="covers/raahein.jpg" alt="Raahein" class="thumb-img" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="s-name">Raahein</div>
+            <div class="s-sub">Single · Boom-Bap</div>
+          </div>
+        </div>
+        <div class="s-year">DD Mon 2024</div>
+        <div class="s-runtime">0:00</div>
+        <div class="s-links">
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl sp">Spotify</a>
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl yt">YouTube</a>
+          <a href="https://music.apple.com"     target="_blank" class="sl am">Apple</a>
+        </div>
+      </div>
+
+      <!-- 07 · Desh ki Sachaai -->
+      <div class="s-row">
+        <div class="s-num">07</div>
+        <div class="s-info">
+          <div class="s-thumb" style="background: linear-gradient(135deg,#0a0a1e,#2d2d55)"><img src="covers/desh-ki-sachaai.jpg" alt="Desh ki Sachaai" class="thumb-img" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="s-name">Desh ki Sachaai</div>
+            <div class="s-sub">Single · Hindi Rap</div>
+          </div>
+        </div>
+        <div class="s-year">DD Mon 2023</div>
+        <div class="s-runtime">0:00</div>
+        <div class="s-links">
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl sp">Spotify</a>
+          <a href="https://sekraog.netlify.app" target="_blank" class="sl yt">YouTube</a>
+          <a href="https://music.apple.com"     target="_blank" class="sl am">Apple</a>
+        </div>
+      </div>
+
+    </div><!-- /list-view -->
+  </div><!-- /sec-singles -->
+
+  <footer class="site-footer">
+    <div class="footer-logo">SEKRA OG</div>
+    <div class="footer-copy">© 2026 Sekra OG · All rights reserved · Jaipur, India</div>
+  </footer>
+</div><!-- /page-music -->
+
+<!-- ══════════════════════════════════════
+     PAGE: ABOUT
+══════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="about-hero reveal">
+    <div class="about-eyebrow">Who is Sekra OG</div>
+    <div class="about-heading">
+      Raw Bars.<br><span class="outline">Real Words.</span>
+    </div>
+    <p class="about-bio">
+      <strong>SEKRA OG</strong> is a rapper and music producer out of <strong>Jaipur, Rajasthan</strong> —
+      crafting verses that sit at the intersection of street realism, desi identity, and raw lyricism.
+      The music moves between <strong>Hindi boom-bap</strong>, introspective freestyles, and lo-fi hip-hop —
+      always authentic, always unfiltered.<br><br>
+      Off the mic, a <strong>Computer Science graduate</strong> with a deep focus in AI/ML and web dev —
+      proving that bars and builds aren't as different as people think.
+    </p>
+  </div>
+
+  <div class="stats-strip reveal">
+    <div class="stat-cell">
+      <div class="stat-big">8</div>
+      <div class="stat-sm">Releases</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">1+</div>
+      <div class="stat-sm">Years Active</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">JAIPUR</div>
+      <div class="stat-sm">Hometown</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">∞</div>
+      <div class="stat-sm">Bars Incoming</div>
+    </div>
+  </div>
+
+  <div class="about-links reveal">
+    <a href="https://chaitanya-sekra-portfolio.netlify.app/"        target="_blank" class="alink alt">⚡ Dev Portfolio</a>
+    <a href="https://linkedin.com/in/chaitanya-sekra"  target="_blank" class="alink alt">💼 LinkedIn</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaitanyasekra123@gmail.com" class="alink alt">✉ Email</a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-logo">SEKRA OG</div>
+    <div class="footer-copy">© 2026 Sekra OG · All rights reserved</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: VIDEOS
+══════════════════════════════════════ -->
+<div id="page-videos" class="page">
+  <div class="vid-hdr reveal">
+    <div class="vid-title">Music<br><span class="outline">Videos</span></div>
+    <p class="vid-sub">Official visuals · Click to watch</p>
+  </div>
+
+  <div class="vid-grid reveal">
+
+    <!-- Video 01 — replace href with YouTube link, src with thumbnails/filename.jpg -->
+    <a href="https://youtu.be/xCWbhieyutM?si=JDY6fIb4UKXtl_Q7" target="_blank" class="vid-card">
+      <div class="vid-thumb" style="background: linear-gradient(135deg,#000410,#001850)">
+        <img src="thumbnails/marwadi-mix.png" alt="Marwadi Mix video thumbnail" class="vid-thumb-img" onerror="this.style.display='none'">
+        <div class="vid-play-icon">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <div class="vid-info">
+        <div class="vid-badge">Official Video</div>
+        <div class="vid-name">Marwadi Mix</div>
+        <div class="vid-meta">2026 · Hip-Hop/Rap</div>
+      </div>
+    </a>
+
+    <!-- Video 02 -->
+    <a href="https://youtu.be/xmmZIblQLUk?si=IoIdxm07I6knxESc" target="_blank" class="vid-card">
+      <div class="vid-thumb" style="background: linear-gradient(135deg,#281000,#c87010)">
+        <img src="thumbnails/mein-aur-mein.jpg" alt="Mein aur Mein video thumbnail" class="vid-thumb-img" onerror="this.style.display='none'">
+        <div class="vid-play-icon">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <div class="vid-info">
+        <div class="vid-badge">Official Video</div>
+        <div class="vid-name">Mein aur Mein</div>
+        <div class="vid-meta">2026 · Desi Rap</div>
+      </div>
+    </a>
+
+    <!-- Video 03 -->
+    <a href="https://youtu.be/FDASEq41BN0?si=vhEa-ZaUl5rv0wvY" target="_blank" class="vid-card">
+      <div class="vid-thumb" style="background: linear-gradient(135deg,#0a0015,#300050)">
+        <img src="thumbnails/rahein.png" alt="Rahein video thumbnail" class="vid-thumb-img" onerror="this.style.display='none'">
+        <div class="vid-play-icon">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <div class="vid-info">
+        <div class="vid-badge">Official Video</div>
+        <div class="vid-name">Rahein</div>
+        <div class="vid-meta">2025 · Desi Hip-Hop</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="vid-channel-cta reveal">
+    <a href="https://www.youtube.com/@sekraog" target="_blank" class="vid-cta-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+      Watch Full Channel
+    </a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-logo">SEKRA OG</div>
+    <div class="footer-copy">© 2026 Sekra OG · All rights reserved · Jaipur, India</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: SOCIAL
+══════════════════════════════════════ -->
+<div id="page-social" class="page">
+  <div class="social-hdr reveal">
+    <div class="social-title">Connect</div>
+  </div>
+
+  <div class="social-grid reveal">
+
+    <a href="https://www.instagram.com/sekra.og/" target="_blank" class="soc-card soc-ig">
+      <div class="soc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 4.9.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9 0-3.3 0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+      </div>
+      <div class="soc-platform">Instagram</div>
+      <div class="soc-handle">@sekraog</div>
+      <div class="soc-arrow">Follow →</div>
+    </a>
+
+    <a href="https://www.youtube.com/@SekraOG" target="_blank" class="soc-card soc-yt">
+      <div class="soc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+      </div>
+      <div class="soc-platform">YouTube</div>
+      <div class="soc-handle">@SekraOg</div>
+      <div class="soc-arrow">Subscribe →</div>
+    </a>
+
+    <a href="https://open.spotify.com/artist/7IcszNERQjVUjT7mNzhfdI?si=DcSHMNSET--yMlOc_3OLQQ" target="_blank" class="soc-card soc-sp">
+      <div class="soc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.4-.7.5-1 .2-2.8-1.7-6.3-2.1-10.5-1.1-.4.1-.8-.2-.9-.6-.1-.4.2-.8.6-.9 4.5-1 8.4-.6 11.6 1.3.3.2.4.7.2 1.1zm1.5-3.3c-.3.4-.8.6-1.2.3C14.9 12.4 11 11.8 6.8 13c-.5.1-1-.1-1.2-.6-.1-.5.1-1 .6-1.2 4.8-1.4 9.1-.7 12.5 1.6.4.3.5.9.3 1.2zm.1-3.4c-3.5-2.1-9.3-2.3-12.7-1.3-.5.2-1.1-.1-1.3-.6-.2-.5.1-1.1.6-1.3 3.9-1.2 10.3-.9 14.4 1.5.5.3.7 1 .4 1.5-.3.5-1 .6-1.4.2z"/></svg>
+      </div>
+      <div class="soc-platform">Spotify</div>
+      <div class="soc-handle">Sekra OG</div>
+      <div class="soc-arrow">Stream →</div>
+    </a>
+
+    <a href="https://music.apple.com/us/artist/sekraog/1784595995" target="_blank" class="soc-card soc-am">
+      <div class="soc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M23.994 6.124a9.23 9.23 0 0 0-.244-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.76-.69c-.69-.124-1.37-.155-2.06-.155H6.25c-.69 0-1.37.031-2.06.155a5.022 5.022 0 0 0-1.76.69C1.312 1.624.567 2.624.25 3.934A9.23 9.23 0 0 0 .006 6.124C-.001 6.5 0 6.876 0 7.25v9.5c0 .374-.001.75.006 1.126.031 1.43.35 2.74 1.244 3.81.863 1.031 2.038 1.624 3.38 1.875.69.124 1.37.155 2.06.186h11.62c.69-.031 1.37-.062 2.06-.186 1.342-.25 2.517-.844 3.38-1.875.895-1.07 1.213-2.38 1.244-3.81.007-.376.006-.752.006-1.126V7.25c0-.374.001-.75-.006-1.126zm-6.837 7.744l-1.882 1.098c-.25.145-.572.145-.822 0l-1.882-1.098c-.25-.145-.406-.413-.406-.7V7.876c0-.288.156-.556.406-.7l1.882-1.098c.25-.145.572-.145.822 0l1.882 1.098c.25.145.406.413.406.7v5.292c0 .287-.156.555-.406.7z"/></svg>
+      </div>
+      <div class="soc-platform">Apple Music</div>
+      <div class="soc-handle">Sekra OG</div>
+      <div class="soc-arrow">Listen →</div>
+    </a>
+
+    <a href="https://music.youtube.com/channel/UCHO8ujrNyReKr5K0PWz7m5g?si=bpfFI8XwQckW8wgl" target="_blank" class="soc-card soc-am">
+      <div class="soc-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M23.994 6.124a9.23 9.23 0 0 0-.244-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.76-.69c-.69-.124-1.37-.155-2.06-.155H6.25c-.69 0-1.37.031-2.06.155a5.022 5.022 0 0 0-1.76.69C1.312 1.624.567 2.624.25 3.934A9.23 9.23 0 0 0 .006 6.124C-.001 6.5 0 6.876 0 7.25v9.5c0 .374-.001.75.006 1.126.031 1.43.35 2.74 1.244 3.81.863 1.031 2.038 1.624 3.38 1.875.69.124 1.37.155 2.06.186h11.62c.69-.031 1.37-.062 2.06-.186 1.342-.25 2.517-.844 3.38-1.875.895-1.07 1.213-2.38 1.244-3.81.007-.376.006-.752.006-1.126V7.25c0-.374.001-.75-.006-1.126zm-6.837 7.744l-1.882 1.098c-.25.145-.572.145-.822 0l-1.882-1.098c-.25-.145-.406-.413-.406-.7V7.876c0-.288.156-.556.406-.7l1.882-1.098c.25-.145.572-.145.822 0l1.882 1.098c.25.145.406.413.406.7v5.292c0 .287-.156.555-.406.7z"/></svg>
+      </div>
+      <div class="soc-platform">Youtube Music</div>
+      <div class="soc-handle">Sekra OG</div>
+      <div class="soc-arrow">Play →</div>
+    </a>
+
+  </div>
+
+  <footer class="site-footer" style="margin-top: 80px;">
+    <div class="footer-logo">SEKRA OG</div>
+    <div class="footer-copy">© 2025 Sekra OG · All rights reserved</div>
+  </footer>
+</div>
+
+<script src="main.js"></script>
 </body>
-
 </html>
